@@ -6,8 +6,8 @@ def readCSVFile(p_csv_full_name, p_print_html):
         result_list = list(reader)
         if(p_print_html):
             print(result_list)
-            for(row in result_list):
-                print(row[1])
+            for row in result_list:
+                print(row)
 
 
 readCSVFile('C:\\Dev\\Git\\WeData\\Data_Samples\\CSV\\sales.csv', True)
