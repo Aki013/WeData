@@ -8,7 +8,7 @@ def readCSVFile(p_csv_full_name, p_print_html):
         if(p_print_html):
             #print(result_list)
             for row in result_list:
-                print(row)
+                print('ligne : ' + row)
 
 
 clear = lambda: os.system('cls')
