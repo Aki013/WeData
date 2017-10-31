@@ -1,0 +1,10 @@
+C:\Dev\Git\WeData\Engine\C#\bin\Debug\netcoreapp2.0\C#.deps.json
+C:\Dev\Git\WeData\Engine\C#\bin\Debug\netcoreapp2.0\C#.runtimeconfig.json
+C:\Dev\Git\WeData\Engine\C#\bin\Debug\netcoreapp2.0\C#.runtimeconfig.dev.json
+C:\Dev\Git\WeData\Engine\C#\bin\Debug\netcoreapp2.0\C#.dll
+C:\Dev\Git\WeData\Engine\C#\bin\Debug\netcoreapp2.0\C#.pdb
+C:\Dev\Git\WeData\Engine\C#\obj\Debug\netcoreapp2.0\C#.csproj.CoreCompileInputs.cache
+C:\Dev\Git\WeData\Engine\C#\obj\Debug\netcoreapp2.0\C#.AssemblyInfoInputs.cache
+C:\Dev\Git\WeData\Engine\C#\obj\Debug\netcoreapp2.0\C#.AssemblyInfo.cs
+C:\Dev\Git\WeData\Engine\C#\obj\Debug\netcoreapp2.0\C#.dll
+C:\Dev\Git\WeData\Engine\C#\obj\Debug\netcoreapp2.0\C#.pdb
