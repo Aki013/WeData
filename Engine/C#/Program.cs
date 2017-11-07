@@ -6,7 +6,8 @@ namespace C_
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World 10 !");
+            Console.WriteLine("Hello World !");
+            Console.WriteLine("I'am C# in VS Code !");
         }
     }
 }
