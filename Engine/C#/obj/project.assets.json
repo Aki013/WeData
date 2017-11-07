@@ -670,9 +670,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\Git\\WeData\\Engine\\C#\\C#.csproj",
+      "projectUniqueName": "c:\\Dev\\Git\\WeData\\Engine\\C#\\C#.csproj",
       "projectName": "C#",
-      "projectPath": "C:\\Dev\\Git\\WeData\\Engine\\C#\\C#.csproj",
+      "projectPath": "c:\\Dev\\Git\\WeData\\Engine\\C#\\C#.csproj",
       "packagesPath": "C:\\Users\\dbertet\\.nuget\\packages\\",
       "outputPath": "C:\\Dev\\Git\\WeData\\Engine\\C#\\obj\\",
       "projectStyle": "PackageReference",

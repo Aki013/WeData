@@ -5,6 +5,9 @@
     "tasks": [
         {
             "taskName": "build",
+            "args": [
+                "${workspaceRoot}/C#.csproj"
+            ],
             "command": "dotnet build",
             "type": "shell",
             "group": "build",
