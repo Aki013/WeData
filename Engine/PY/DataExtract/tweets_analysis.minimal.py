@@ -4,6 +4,9 @@
 import tweepy           # To consume Twitter's API
 import pandas as pd     # To handle data
 import numpy as np      # For number computing
+import json
+import os.path
+
 
 # For plotting and visualization:
 from IPython.display import display
@@ -11,11 +14,17 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 #%matplotlib inline
 
-# We import our access keys:
-from credentials import *    # This will allow us to use the keys as variables
-
 from textblob import TextBlob
 import re
+
+#Read Config_File
+with open('D:\Perso\DEV\Python\config.json') as json_data_file:
+    config_data = json.load(json_data_file)
+
+CONSUMER_KEY=config_data['twitter']['CONSUMER_KEY']
+CONSUMER_SECRET=config_data['twitter']['CONSUMER_SECRET']
+ACCESS_TOKEN=config_data['twitter']['ACCESS_TOKEN']
+ACCESS_SECRET=config_data['twitter']['ACCESS_SECRET']
 
 
 # API's setup:
@@ -58,16 +67,16 @@ def analize_sentiment(tweet):
 extractor = twitter_setup()
 
 # We create a tweet list as follows:
-tweets = extractor.user_timeline(screen_name="realDonaldTrump", count=200)
-#tweets = extractor.search(q="bitcoin", count=10000)
+#tweets = extractor.user_timeline(screen_name="realDonaldTrump", count=200)
+tweets = [status for status in tweepy.Cursor(extractor.search, q="bitcoin").items(1000)]
 #tweets = tweepy.Cursor(extractor.search, q='fast-car', since='2018-01-21', until='2018-01-21')
 print("Number of tweets extracted: {}.\n".format(len(tweets)))
 
 # We print the most recent 5 tweets:
-print("5 recent tweets:\n")
+'''print("5 recent tweets:\n")
 for tweet in tweets[:5]:
     print(tweet.text)
-    print()
+    print()'''
 
 
 #Tweets attributes
@@ -90,17 +99,19 @@ data['Date'] = np.array([tweet.created_at for tweet in tweets])
 data['Source'] = np.array([tweet.source for tweet in tweets])
 data['Likes']  = np.array([tweet.favorite_count for tweet in tweets])
 data['RTs']    = np.array([tweet.retweet_count for tweet in tweets])
+
+# We create a pandas dataframe as follows:
+data_min = pd.DataFrame(data=[tweet.text for tweet in tweets], columns=['Tweets'])
+data_min['Date'] = np.array([tweet.created_at for tweet in tweets])
+
 # We display the first 10 elements of the dataframe:
-display(data.head(10))
+#display(data.head(10))
 
 # We extract the mean of lenghts:
-mean = np.mean(data['len'])
-
-print("The lenght's average in tweets: {}".format(mean))
-
+#mean = np.mean(data['len'])
+#print("The lenght's average in tweets: {}".format(mean))
 
 # We extract the tweet with more FAVs and more RTs:
-
 fav_max = np.max(data['Likes'])
 rt_max  = np.max(data['RTs'])
 
@@ -118,35 +129,35 @@ print("{} characters.\n".format(data['len'][rt]))
 
 
 # We create time series for data:
-tlen = pd.Series(data=data['len'].values, index=data['Date'])
+'''tlen = pd.Series(data=data['len'].values, index=data['Date'])
 tfav = pd.Series(data=data['Likes'].values, index=data['Date'])
 tret = pd.Series(data=data['RTs'].values, index=data['Date'])
 # Lenghts along time:
-tlen.plot(figsize=(16,4), color='r');
+tlen.plot(figsize=(16,4), color='r');'''
 
 
 # Likes vs retweets visualization:
-tfav.plot(figsize=(16,4), label="Likes", legend=True)
-tret.plot(figsize=(16,4), label="Retweets", legend=True);
+'''tfav.plot(figsize=(16,4), label="Likes", legend=True)
+tret.plot(figsize=(16,4), label="Retweets", legend=True);'''
 
 
 
 
 # We obtain all possible sources:
-sources = []
+'''sources = []
 for source in data['Source']:
     if source not in sources:
-        sources.append(source)
+        sources.append(source)'''
 
 # We print sources list:
-print("Creation of content sources:")
+'''print("Creation of content sources:")
 for source in sources:
-    print("* {}".format(source))
+    print("* {}".format(source))'''
 
 
 
 # We create a numpy vector mapped to labels:
-percent = np.zeros(len(sources))
+'''percent = np.zeros(len(sources))
 
 for source in data['Source']:
     for index in range(len(sources)):
@@ -157,15 +168,16 @@ for source in data['Source']:
 percent /= 100
 # Pie chart:
 pie_chart = pd.Series(percent, index=sources, name='Sources')
-pie_chart.plot.pie(fontsize=11, autopct='%.2f', figsize=(6, 6));
+pie_chart.plot.pie(fontsize=11, autopct='%.2f', figsize=(6, 6));'''
 
 
 
 # We create a column with the result of the analysis:
 data['SA'] = np.array([ analize_sentiment(tweet) for tweet in data['Tweets'] ])
+data_min['SA'] = np.array([ analize_sentiment(tweet) for tweet in data['Tweets'] ])
 
 # We display the updated dataframe with the new column:
-display(data.head(10))
+display(data_min.head(10000))
 
 
 # We construct lists with classified tweets:
