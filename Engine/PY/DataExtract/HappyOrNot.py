@@ -3,6 +3,7 @@ from textblob import TextBlob
 
 def analize_sentiment(text):
     analysis = TextBlob(text)
+    print("language : " + analysis.detect_language())
     #French Version
     #analysis = TextBlob(text, pos_tagger=PatternTagger(), analyzer=PatternAnalyzer())
     if analysis.sentiment.polarity > 0:
@@ -14,9 +15,4 @@ def analize_sentiment(text):
 
 ptext = input()
 result = analize_sentiment(ptext)
-if result == -1:
-    print("pff") 
-if result == 0:
-    print("bof") 
-if result == 1:
-    print("héhé") 
+print(result)
