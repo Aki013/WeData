@@ -6,3 +6,6 @@ pip install seaborn
 pip install textblob
 pip install textblob-fr
 pip install ipython
+
+
+pip install langdetect
