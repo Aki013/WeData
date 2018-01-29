@@ -18,7 +18,7 @@ from textblob import TextBlob
 import re
 
 #Read Config_File
-with open('D:\Perso\DEV\Python\config.json') as json_data_file:
+with open('C:\DEV\Python\config.json') as json_data_file:
     config_data = json.load(json_data_file)
 
 CONSUMER_KEY=config_data['twitter']['CONSUMER_KEY']
@@ -68,7 +68,7 @@ extractor = twitter_setup()
 
 # We create a tweet list as follows:
 #tweets = extractor.user_timeline(screen_name="realDonaldTrump", count=200)
-tweets = [status for status in tweepy.Cursor(extractor.search, q="bitcoin").items(1000)]
+tweets = [status for status in tweepy.Cursor(extractor.search, q="bitcoin").items(100000)]
 #tweets = tweepy.Cursor(extractor.search, q='fast-car', since='2018-01-21', until='2018-01-21')
 print("Number of tweets extracted: {}.\n".format(len(tweets)))
 
