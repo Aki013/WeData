@@ -17,4 +17,9 @@ def analize_sentiment(text):
 
 ptext = input()
 result = analize_sentiment(ptext)
-print(result)
+if(result == -1):
+    print('pff')
+if(result == 0):
+    print('bof')
+if(result == 1):
+    print('héhé')
