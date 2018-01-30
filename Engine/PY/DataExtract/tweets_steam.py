@@ -1,10 +1,11 @@
-import tweepy
+import libs.tweepy.utils
 import json
 
 
 
 #Read Config_File
-with open('D:\Perso\DEV\Python\config.json') as json_data_file:
+with open('C:\DEV\Python\config.json') as json_data_file:
+#with open('D:\Perso\DEV\Python\config.json') as json_data_file:
     config_data = json.load(json_data_file)
 
 consumer_key=config_data['twitter']['CONSUMER_KEY']
