@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-import sys
-sys.path.append("/libs/tweepy/")
-
-=======
->>>>>>> deed092638d7002a078582467b1f220504ca7b56
 import tweepy
 import json
 from textblob import TextBlob
@@ -65,4 +59,4 @@ if __name__ == '__main__':
 
     # Connect the stream to our listener
     stream = tweepy.Stream(auth, listener)
-    stream.filter(track=['Bitcoin'])    stream.filter(track=[Words])    stream.filter(track=[Words])
+    stream.filter(track=[Words])
