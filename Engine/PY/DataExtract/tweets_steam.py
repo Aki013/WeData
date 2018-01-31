@@ -1,4 +1,7 @@
-import libs.tweepy.utils
+import sys
+sys.path.append("/libs/tweepy/")
+
+import tweepy
 import json
 
 
