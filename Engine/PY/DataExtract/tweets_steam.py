@@ -65,4 +65,4 @@ if __name__ == '__main__':
 
     # Connect the stream to our listener
     stream = tweepy.Stream(auth, listener)
-    stream.filter(track=['Bitcoin'])
+    stream.filter(track=['Bitcoin'])    stream.filter(track=[Words])
