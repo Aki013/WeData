@@ -4,8 +4,8 @@ from textblob import TextBlob
 
 
 #Read Config_File
-#with open('C:\DEV\Python\config.json') as json_data_file:
-with open('D:\Perso\DEV\Python\config.json') as json_data_file:
+with open('C:\DEV\Python\config.json') as json_data_file:
+#with open('D:\Perso\DEV\Python\config.json') as json_data_file:
     config_data = json.load(json_data_file)
 
 consumer_key=config_data['twitter']['CONSUMER_KEY']
@@ -39,7 +39,7 @@ class PrintListener(tweepy.StreamListener):
         PrintListener.nb_tweets+=1
         PrintListener.sum_pol += analize_sentiment(tweet_text)        
         print(str(PrintListener.nb_tweets) + ' - ' + tweet_date + ' - @' + tweet_author + ' :   ' + tweet_text)
-        print('     sum pol : ' + str(PrintListener.sum_pol))
+        print('-----sum pol : ' + str(PrintListener.sum_pol))
         #print('@%s: %s' % (tweet['user']['screen_name'], tweet['text'].encode('ascii', 'ignore')))
 
     def on_error(self, status):
@@ -49,7 +49,7 @@ class PrintListener(tweepy.StreamListener):
 if __name__ == '__main__':
     listener = PrintListener()
 
-    Words = 'Death'
+    Words = 'bitcoin'
     # Show system message
     print('I will now print Tweets containing "' + Words + '"! ==>')
 
