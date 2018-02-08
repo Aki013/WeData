@@ -1,8 +1,5 @@
 
 import json
-<<<<<<< HEAD
-#from textblob import TextBlob
-=======
 import os
 import sys
 
@@ -14,8 +11,6 @@ sys.path.append(libs_dir)
 # Now you can import any library located in the "libs" folder !
 import tweepy
 from textblob import TextBlob
-import numpy
->>>>>>> b017ad9a7199a3a8e93a35feee05e49b6105fcd5
 
 
 #Read Config_File
@@ -43,7 +38,7 @@ def analize_sentiment(text):
 
 
 # This listener will print out all Tweets it receives
-class PrintListener(c_libs.tweepy.StreamListener):
+class PrintListener(tweepy.StreamListener):
     nb_tweets = 0
     sum_pol = 0
     def on_data(self, data):
