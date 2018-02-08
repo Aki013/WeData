@@ -8,9 +8,10 @@ parent_dir = os.path.abspath(os.path.dirname(__file__))
 libs_dir = os.path.join(parent_dir, 'libs')
 sys.path.append(libs_dir)
 
-# Now you can import any library located in the "vendor" folder!
+# Now you can import any library located in the "libs" folder !
 import tweepy
 from textblob import TextBlob
+import numpy
 
 
 #Read Config_File
@@ -26,12 +27,15 @@ access_token_secret=config_data['twitter']['ACCESS_SECRET']
 def analize_sentiment(text):
     analysis = TextBlob(text)
     #print("language : " + analysis.detect_language())
-    if analysis.sentiment.polarity > 0:
-        return 1
-    elif analysis.sentiment.polarity == 0:
-        return 0
+    if(analysis.detect_language() == 'en'):
+        if analysis.sentiment.polarity > 0.5:
+            return 1
+        elif analysis.sentiment.polarity < 0:
+            return -1
+        else:
+            return 0
     else:
-        return -1
+        return 0
 
 
 # This listener will print out all Tweets it receives
