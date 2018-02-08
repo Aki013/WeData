@@ -1,5 +1,15 @@
-import tweepy
+
 import json
+import os
+import sys
+
+# Add lins directory to module search path "libs"
+parent_dir = os.path.abspath(os.path.dirname(__file__))
+libs_dir = os.path.join(parent_dir, 'libs')
+sys.path.append(libs_dir)
+
+# Now you can import any library located in the "vendor" folder!
+import tweepy
 from textblob import TextBlob
 
 
