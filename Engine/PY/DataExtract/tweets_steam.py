@@ -1,11 +1,11 @@
 import tweepy
 import json
-from textblob import TextBlob
+#from textblob import TextBlob
 
 
 #Read Config_File
-with open('C:\DEV\Python\config.json') as json_data_file:
-#with open('D:\Perso\DEV\Python\config.json') as json_data_file:
+#with open('C:\DEV\Python\config.json') as json_data_file:
+with open('D:\Perso\DEV\Python\config.json') as json_data_file:
     config_data = json.load(json_data_file)
 
 consumer_key=config_data['twitter']['CONSUMER_KEY']
@@ -25,7 +25,7 @@ def analize_sentiment(text):
 
 
 # This listener will print out all Tweets it receives
-class PrintListener(tweepy.StreamListener):
+class PrintListener(c_libs.tweepy.StreamListener):
     nb_tweets = 0
     sum_pol = 0
     def on_data(self, data):
