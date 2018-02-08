@@ -1,6 +1,21 @@
-import tweepy
+
 import json
+<<<<<<< HEAD
 #from textblob import TextBlob
+=======
+import os
+import sys
+
+# Add lins directory to module search path "libs"
+parent_dir = os.path.abspath(os.path.dirname(__file__))
+libs_dir = os.path.join(parent_dir, 'libs')
+sys.path.append(libs_dir)
+
+# Now you can import any library located in the "libs" folder !
+import tweepy
+from textblob import TextBlob
+import numpy
+>>>>>>> b017ad9a7199a3a8e93a35feee05e49b6105fcd5
 
 
 #Read Config_File
@@ -16,12 +31,15 @@ access_token_secret=config_data['twitter']['ACCESS_SECRET']
 def analize_sentiment(text):
     analysis = TextBlob(text)
     #print("language : " + analysis.detect_language())
-    if analysis.sentiment.polarity > 0:
-        return 1
-    elif analysis.sentiment.polarity == 0:
-        return 0
+    if(analysis.detect_language() == 'en'):
+        if analysis.sentiment.polarity > 0.5:
+            return 1
+        elif analysis.sentiment.polarity < 0:
+            return -1
+        else:
+            return 0
     else:
-        return -1
+        return 0
 
 
 # This listener will print out all Tweets it receives
