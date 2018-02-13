@@ -11,6 +11,7 @@ sys.path.append(libs_dir)
 from textblob.classifiers import NaiveBayesClassifier
 import nltk
 
+nltk.data.path.append('libs\\nltk_data\\')
 fp = open('.\Classifiers\classifier_fr.json', 'r')
 
 #python -m textblob.download_corpora

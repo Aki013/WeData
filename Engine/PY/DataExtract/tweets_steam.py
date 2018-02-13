@@ -12,6 +12,13 @@ sys.path.append(libs_dir)
 import tweepy
 from textblob import TextBlob
 
+# For others languages
+from textblob.classifiers import NaiveBayesClassifier
+import nltk
+input_lexicon_fr = open('.\Classifiers\classifier_fr.json', 'r')
+
+#python -m textblob.download_corpora
+cl_fr = NaiveBayesClassifier(input_lexicon_fr, format="json")
 
 #Read Config_File
 #with open('C:\DEV\Python\config.json') as json_data_file:
